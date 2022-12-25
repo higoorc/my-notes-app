@@ -37,6 +37,7 @@ class EditorFragment : Fragment() {
     private lateinit var saveButton: FloatingActionButton
 
     private var selectedColor: Int = R.color.teal
+    private lateinit var currentNote: Note
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,13 +64,16 @@ class EditorFragment : Fragment() {
         yellowButton.setOnClickListener { setColorListener(R.color.yellow, it) }
         saveButton.setOnClickListener { saveNote() }
 
-        if (args.note != null) {
-            val note = args.note
-            noteTitle.setText(note?.title)
-            noteContent.setText(note?.content)
-            selectedColor = note?.color ?: R.color.teal
+        args.note.let {
+            if (it != null) {
+                currentNote = it
+                noteTitle.setText(currentNote.title)
+                noteContent.setText(currentNote.content)
+                selectedColor = currentNote.color
+            }
         }
 
+        noteCard.setCardBackgroundColor(resources.getColor(selectedColor))
         return binding.root
     }
 
@@ -93,15 +97,18 @@ class EditorFragment : Fragment() {
         // TODO: Improve error handling with UI messages about note not created.
         if (title.isNotEmpty() && content.isNotEmpty()) {
             val timestamp = Date.from(Instant.now()).time
-            val note = Note(
+            var newNote = Note(
                 title = title,
                 content = content,
                 timestamp = timestamp,
                 color = selectedColor
             )
 
-            // TODO: Edit not working as expected, re-creating note.
-            viewModel.saveNote(note)
+            if (this::currentNote.isInitialized) {
+                newNote = newNote.copy(id = currentNote.id)
+            }
+
+            viewModel.saveNote(newNote)
         }
 
         findNavController().navigateUp()
