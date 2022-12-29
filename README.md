@@ -19,4 +19,4 @@ The application was created as an example of how to implement from the scratch a
 
 ## 🛠 Architecture
 
-![](src/main/res/mvvm.png)
+![](app/src/main/res/mvvm.png)
