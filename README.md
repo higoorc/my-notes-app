@@ -19,4 +19,8 @@ The application was created as an example of how to implement from the scratch a
 
 ## 🛠 Architecture
 
-![](app/src/main/res/mvvm.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/42069752/209963626-20e21fd6-bdd5-46fa-a02f-b419c82e9d49.png" width="400" />
+  <img src="https://user-images.githubusercontent.com/42069752/209963771-31aac87a-f104-4246-8d84-9f9ca5ad0ca8.png" width="400" /> 
+  <img src="app/src/main/res/mvvm.png" width="700" />
+</p>
