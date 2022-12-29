@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/note_item"
-    android:padding="12dp"
+    android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -35,6 +35,8 @@
                 android:layout_height="match_parent"
                 app:layout_constraintTop_toBottomOf="@id/note_title"
                 app:layout_constraintStart_toStartOf="parent"
+                android:maxLines="4"
+                android:ellipsize="end"
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 tools:text="Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
@@ -46,6 +48,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="3dp"
                 android:textColor="#656161"
+                android:layout_marginTop="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:text="25 dec 2022 15:30 PM"/>

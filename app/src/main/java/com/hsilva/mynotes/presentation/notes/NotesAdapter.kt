@@ -1,6 +1,7 @@
 package com.hsilva.mynotes.presentation.notes
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class NotesAdapter(
+    private val context: Context,
     private val onClick: (NoteEvent) -> Unit
 ) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
@@ -30,7 +32,7 @@ class NotesAdapter(
                 noteTitle.text = currentNote.title
                 noteContent.text = currentNote.content
                 noteTimestamp.text = convertLongToTime(currentNote.timestamp)
-                noteCard.setCardBackgroundColor(currentNote.color)
+                noteCard.setCardBackgroundColor(context.resources.getColor(currentNote.color))
 
                 editButton = noteEdit
                 deleteButton = noteDelete

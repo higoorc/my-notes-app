@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
+import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -78,16 +79,16 @@ class EditorFragment : Fragment() {
     }
 
     private fun setColorListener(color: Int, view: View) {
-        purpleButton.visibility = View.VISIBLE
+/*        purpleButton.visibility = View.VISIBLE
         orangeButton.visibility = View.VISIBLE
         blueButton.visibility = View.VISIBLE
         tealButton.visibility = View.VISIBLE
         yellowButton.visibility = View.VISIBLE
-        view.visibility = View.GONE
+        view.visibility = View.GONE*/
 
         // TODO: Color not worked as expected, wrong colors and buttons visibility.
-        noteCard.setBackgroundColor(color)
         selectedColor = color
+        noteCard.setCardBackgroundColor(resources.getColor(selectedColor))
     }
 
     private fun saveNote() {

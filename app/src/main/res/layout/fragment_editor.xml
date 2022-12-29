@@ -23,7 +23,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/note_card"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="650dp"
         android:layout_marginTop="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
@@ -41,11 +41,14 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:textSize="25sp"
+                android:layout_margin="5dp"
+                android:textSize="32sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:autofillHints=""
-                android:inputType="text"
+                android:inputType="text|textNoSuggestions"
+                android:background="@null"
+                android:hint="Add your title"
                 tools:ignore="LabelFor"
                 tools:text="Note Title 1"/>
 
@@ -55,60 +58,84 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/note_title"
                 app:layout_constraintStart_toStartOf="parent"
-                android:textSize="18sp"
+                android:layout_margin="5dp"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
                 android:textColor="@color/white"
                 android:autofillHints=""
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:background="@null"
+                android:hint="Add some content for your note."
                 tools:text="Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
                 Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum "
                 tools:ignore="LabelFor" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/color_purple"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@color/purple"
-                android:layout_margin="10dp"
+                android:padding="3dp"
+                android:layout_margin="3dp"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:contentDescription="@string/app_name" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/color_orange"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@color/orange"
-                android:layout_margin="10dp"
+                android:padding="3dp"
+                android:layout_margin="3dp"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp"
                 app:layout_constraintStart_toEndOf="@id/color_purple"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:contentDescription="@string/app_name" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/color_blue"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@color/blue"
-                android:layout_margin="10dp"
+                android:padding="3dp"
+                android:layout_margin="3dp"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp"
                 app:layout_constraintStart_toEndOf="@id/color_orange"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:contentDescription="@string/app_name" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/color_teal"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@color/teal"
-                android:layout_margin="10dp"
+                android:padding="3dp"
+                android:layout_margin="3dp"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp"
                 app:layout_constraintStart_toEndOf="@id/color_blue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:contentDescription="@string/app_name" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/color_yellow"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@color/yellow"
-                android:layout_margin="10dp"
+                android:padding="3dp"
+                android:layout_margin="3dp"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp"
                 app:layout_constraintStart_toEndOf="@id/color_teal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:contentDescription="@string/app_name" />

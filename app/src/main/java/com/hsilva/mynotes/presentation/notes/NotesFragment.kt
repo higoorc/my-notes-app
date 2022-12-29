@@ -25,12 +25,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class NotesFragment : Fragment() {
 
     private val viewModel: NotesViewModel by viewModels()
-    private val adapter = NotesAdapter(this::emitEvent)
 
+    lateinit var adapter: NotesAdapter
     lateinit var notesRecycler: RecyclerView
     lateinit var filterVisibility: ImageView
     lateinit var filterButtons: RadioGroup
-    lateinit var newNote: FloatingActionButton
+    lateinit var newNote: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +51,7 @@ class NotesFragment : Fragment() {
             findNavController().navigate(direction)
         }
 
+        adapter = NotesAdapter(requireContext(), this::emitEvent)
         notesRecycler.adapter = adapter
         notesRecycler.layoutManager = LinearLayoutManager(requireContext())
 
@@ -85,16 +86,8 @@ class NotesFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-/*        viewModel.observeEditState().removeObservers(viewLifecycleOwner)
-        viewModel.observeListState().removeObservers(viewLifecycleOwner)
-        viewModel.observeDeletedNote().removeObservers(viewLifecycleOwner)*/
-
         viewModel.clearData()
         super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     private fun toggleVisibility(view: View) {
