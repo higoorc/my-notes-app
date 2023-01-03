@@ -10,22 +10,6 @@
         android:name="com.hsilva.mynotes.presentation.notes.NotesFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_notes">
-
-        <action android:id="@+id/notes_to_editor"
-            app:destination="@id/EditorFragment"
-            app:launchSingleTop="true"/>
     </fragment>
 
-    <fragment
-        android:id="@+id/EditorFragment"
-        android:name="com.hsilva.mynotes.presentation.editor.EditorFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_editor">
-
-        <argument
-            android:name="note"
-            app:argType="com.hsilva.mynotes.domain.model.Note"
-            app:nullable="true"
-            android:defaultValue="@null"/>
-    </fragment>
 </navigation>
