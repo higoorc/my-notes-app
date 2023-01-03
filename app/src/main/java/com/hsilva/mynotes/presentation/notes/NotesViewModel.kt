@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.hsilva.mynotes.domain.model.Note
 import com.hsilva.mynotes.domain.usecase.NotesManager
 import com.hsilva.mynotes.domain.util.NoteOrder
-import com.hsilva.mynotes.domain.util.OrderType
 import com.hsilva.mynotes.presentation.NoteEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -34,7 +33,7 @@ class NotesViewModel @Inject constructor(
         deletedNote
 
     private var currentFilter: NoteOrder =
-        NoteOrder.Date(OrderType.Ascending)
+        NoteOrder.Date
 
     init {
         getNotes()

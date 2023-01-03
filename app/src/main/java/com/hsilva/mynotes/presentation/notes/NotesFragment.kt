@@ -16,7 +16,6 @@ import com.hsilva.mynotes.R
 import com.hsilva.mynotes.databinding.FragmentNotesBinding
 import com.hsilva.mynotes.domain.model.Note
 import com.hsilva.mynotes.domain.util.NoteOrder
-import com.hsilva.mynotes.domain.util.OrderType
 import com.hsilva.mynotes.presentation.NoteEvent
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -98,9 +97,9 @@ class NotesFragment : Fragment() {
     private fun setFilterButtons() {
         filterButtons.setOnCheckedChangeListener { _, id ->
             val event = when (id) {
-                R.id.radio_button1 -> NoteEvent.Order(NoteOrder.Title(OrderType.Ascending))
-                R.id.radio_button2 -> NoteEvent.Order(NoteOrder.Date(OrderType.Ascending))
-                R.id.radio_button3 -> NoteEvent.Order(NoteOrder.Color(OrderType.Ascending))
+                R.id.radio_button1 -> NoteEvent.Order(NoteOrder.Title)
+                R.id.radio_button2 -> NoteEvent.Order(NoteOrder.Date)
+                R.id.radio_button3 -> NoteEvent.Order(NoteOrder.Color)
                 else -> throw Exception()
             }
 
