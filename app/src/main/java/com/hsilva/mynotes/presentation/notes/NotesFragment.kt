@@ -1,8 +1,6 @@
 package com.hsilva.mynotes.presentation.notes
 
-import android.R
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +9,14 @@ import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.hsilva.mynotes.R
 import com.hsilva.mynotes.databinding.FragmentNotesBinding
+import com.hsilva.mynotes.domain.model.Note
+import com.hsilva.mynotes.domain.util.NoteOrder
+import com.hsilva.mynotes.domain.util.OrderType
 import com.hsilva.mynotes.presentation.NoteEvent
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,10 +46,8 @@ class NotesFragment : Fragment() {
         newNote = binding.addFab
 
         filterVisibility.setOnClickListener { toggleVisibility(filterButtons) }
-        newNote.setOnClickListener {
-            val direction = NotesFragmentDirections.notesToEditor()
-            findNavController().navigate(direction)
-        }
+        newNote.setOnClickListener { navigateToEditor() }
+        setFilterButtons()
 
         adapter = NotesAdapter(requireContext(), this::emitEvent)
         notesRecycler.adapter = adapter
@@ -59,25 +57,19 @@ class NotesFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel.observeListState().observe(viewLifecycleOwner) {
-            Log.d("NotesFragment", "EVENT - New list of notes received.")
-            adapter.submitList(it)
-        }
+        viewModel.observeListState().observe(viewLifecycleOwner) { adapter.submitList(it) }
 
         viewModel.observeEditState().observe(viewLifecycleOwner) { note ->
             if (note != null) {
-                Log.d("NotesFragment", "EVENT - New edit request received.")
-                val direction = NotesFragmentDirections.notesToEditor().setNote(note)
-                findNavController().navigate(direction)
+                navigateToEditor(note)
             }
         }
 
         viewModel.observeDeletedNote().observe(viewLifecycleOwner) { note ->
-            Log.d("NotesFragment", "EVENT - New deleted note received.")
             if (note != null) {
                 Snackbar.make(requireView(), "Your note was deleted.", Snackbar.LENGTH_LONG)
                     .setAction("Undo") { emitEvent(NoteEvent.RestoreNote(note)) }
-                    .setActionTextColor(requireContext().getColor(R.color.holo_red_dark))
+                    .setActionTextColor(requireContext().getColor(R.color.orange))
                     .show()
             }
         }
@@ -97,5 +89,23 @@ class NotesFragment : Fragment() {
 
     private fun emitEvent(event: NoteEvent) =
         viewModel.onEvent(event)
+
+    private fun navigateToEditor(note: Note? = null) {
+        val direction = NotesFragmentDirections.notesToEditor().setNote(note)
+        findNavController().navigate(direction)
+    }
+
+    private fun setFilterButtons() {
+        filterButtons.setOnCheckedChangeListener { _, id ->
+            val event = when (id) {
+                R.id.radio_button1 -> NoteEvent.Order(NoteOrder.Title(OrderType.Ascending))
+                R.id.radio_button2 -> NoteEvent.Order(NoteOrder.Date(OrderType.Ascending))
+                R.id.radio_button3 -> NoteEvent.Order(NoteOrder.Color(OrderType.Ascending))
+                else -> throw Exception()
+            }
+
+            emitEvent(event)
+        }
+    }
 
 }

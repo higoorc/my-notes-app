@@ -4,6 +4,12 @@ Android application for creating, editing, and deleting personal notes, using Ko
 
 The application was created as an example of how to implement from the scratch an Android project following the best industry standards, but because of the small scope of the application, some decisions can be faced as overengineering. The idea is to provide a base, even if it’s not necessary for the specific use case.
 
+<p align="center">
+    <img src="img.png" width="200" />
+    <img src="img_1.png" width="200" />
+    <img src="img_2.png" width="200" />
+</p>
+
 ## 📑 Features
 
 - See all notes created in a list, with a timestamp, title, and first line of content.
