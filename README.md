@@ -16,6 +16,7 @@ The application was created as an example of how to implement from the scratch a
 - When creating a new note user can set the title, content, and color.
 - If the user selects a new color in the editor, the background color of the note is changed.
 - The save button inserts the new note into the database and redirects back to the list.
+- When a note is deleted, a button to undo and re-create the note appears.
 
 ## 🛠 Architecture
 
