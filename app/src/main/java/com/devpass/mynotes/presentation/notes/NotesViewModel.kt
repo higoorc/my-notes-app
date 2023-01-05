@@ -1,4 +1,4 @@
-package com.hsilva.mynotes.presentation.notes
+package com.devpass.mynotes.presentation.notes
 
 import androidx.lifecycle.ViewModel
 

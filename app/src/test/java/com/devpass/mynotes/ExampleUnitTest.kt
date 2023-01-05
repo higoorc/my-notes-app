@@ -1,4 +1,4 @@
-package com.hsilva.mynotes
+package com.devpass.mynotes
 
 import org.junit.Test
 

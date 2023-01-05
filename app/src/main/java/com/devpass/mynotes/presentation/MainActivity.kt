@@ -1,8 +1,8 @@
-package com.hsilva.mynotes.presentation
+package com.devpass.mynotes.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.hsilva.mynotes.R
+import com.devpass.mynotes.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

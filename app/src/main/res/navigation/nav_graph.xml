@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/NotesFragment"
-        android:name="com.hsilva.mynotes.presentation.notes.NotesFragment"
+        android:name="com.devpass.mynotes.presentation.notes.NotesFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_notes">
     </fragment>

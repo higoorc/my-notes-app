@@ -8,11 +8,11 @@ plugins {
 
 android {
 
-    namespace 'com.hsilva.mynotes'
+    namespace 'com.devpass.mynotes'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.hsilva.mynotes"
+        applicationId "com.devpass.mynotes"
         minSdk 28
         targetSdk 31
         versionCode 1
